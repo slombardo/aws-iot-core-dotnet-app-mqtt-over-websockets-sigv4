@@ -23,5 +23,13 @@
         string ReceivedMessageText { get; set; }
 
         string SubscribeStatusLabel { get; set; }
+
+        string CertificatePemPath { get; set; }
+
+        string PrivatePemPath { get; set; }
+
+        string AmazonRootPemPath { get; set; }
+
+        string Port { get; set; }
     }
 }

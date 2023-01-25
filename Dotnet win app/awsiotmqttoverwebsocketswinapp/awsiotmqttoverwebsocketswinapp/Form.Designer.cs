@@ -32,6 +32,7 @@
             this.txtSubscribeMessage = new System.Windows.Forms.TextBox();
             this.txtSubscribeTopic = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblSubscriptionStatus = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblPubStatus = new System.Windows.Forms.Label();
@@ -55,10 +56,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtRegion = new System.Windows.Forms.TextBox();
-            this.lblSubscriptionStatus = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtAmazonRootPemPath = new System.Windows.Forms.TextBox();
+            this.txtPrivatePemPath = new System.Windows.Forms.TextBox();
+            this.txtCertificatePemPath = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnCerts = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSubscribe
@@ -96,10 +107,19 @@
             this.panel3.Controls.Add(this.txtSubscribeMessage);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.txtSubscribeTopic);
-            this.panel3.Location = new System.Drawing.Point(13, 322);
+            this.panel3.Location = new System.Drawing.Point(12, 471);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(873, 192);
             this.panel3.TabIndex = 5;
+            // 
+            // lblSubscriptionStatus
+            // 
+            this.lblSubscriptionStatus.AutoSize = true;
+            this.lblSubscriptionStatus.Location = new System.Drawing.Point(667, 110);
+            this.lblSubscriptionStatus.Name = "lblSubscriptionStatus";
+            this.lblSubscriptionStatus.Size = new System.Drawing.Size(78, 13);
+            this.lblSubscriptionStatus.TabIndex = 7;
+            this.lblSubscriptionStatus.Text = "Not subscribed";
             // 
             // label9
             // 
@@ -189,7 +209,7 @@
             this.panel2.Controls.Add(this.txtPublishMessage);
             this.panel2.Controls.Add(this.txtTopicToPublish);
             this.panel2.Controls.Add(this.lblTopic);
-            this.panel2.Location = new System.Drawing.Point(12, 171);
+            this.panel2.Location = new System.Drawing.Point(11, 320);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 145);
             this.panel2.TabIndex = 4;
@@ -304,7 +324,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtIotEndpoint);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 15);
+            this.panel1.Location = new System.Drawing.Point(11, 164);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(874, 150);
             this.panel1.TabIndex = 3;
@@ -316,20 +336,104 @@
             this.txtRegion.Size = new System.Drawing.Size(100, 20);
             this.txtRegion.TabIndex = 12;
             // 
-            // lblSubscriptionStatus
+            // panel4
             // 
-            this.lblSubscriptionStatus.AutoSize = true;
-            this.lblSubscriptionStatus.Location = new System.Drawing.Point(667, 110);
-            this.lblSubscriptionStatus.Name = "lblSubscriptionStatus";
-            this.lblSubscriptionStatus.Size = new System.Drawing.Size(78, 13);
-            this.lblSubscriptionStatus.TabIndex = 7;
-            this.lblSubscriptionStatus.Text = "Not subscribed";
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.txtPort);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.txtAmazonRootPemPath);
+            this.panel4.Controls.Add(this.txtPrivatePemPath);
+            this.panel4.Controls.Add(this.txtCertificatePemPath);
+            this.panel4.Controls.Add(this.label12);
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.btnCerts);
+            this.panel4.Location = new System.Drawing.Point(11, 16);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(874, 142);
+            this.panel4.TabIndex = 9;
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(635, 33);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(100, 20);
+            this.txtPort.TabIndex = 3;
+            this.txtPort.Text = "8883";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(567, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(26, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Port";
+            // 
+            // txtAmazonRootPemPath
+            // 
+            this.txtAmazonRootPemPath.Location = new System.Drawing.Point(183, 108);
+            this.txtAmazonRootPemPath.Name = "txtAmazonRootPemPath";
+            this.txtAmazonRootPemPath.Size = new System.Drawing.Size(318, 20);
+            this.txtAmazonRootPemPath.TabIndex = 8;
+            // 
+            // txtPrivatePemPath
+            // 
+            this.txtPrivatePemPath.Location = new System.Drawing.Point(183, 70);
+            this.txtPrivatePemPath.Name = "txtPrivatePemPath";
+            this.txtPrivatePemPath.Size = new System.Drawing.Size(318, 20);
+            this.txtPrivatePemPath.TabIndex = 6;
+            // 
+            // txtCertificatePemPath
+            // 
+            this.txtCertificatePemPath.Location = new System.Drawing.Point(183, 33);
+            this.txtCertificatePemPath.Name = "txtCertificatePemPath";
+            this.txtCertificatePemPath.Size = new System.Drawing.Size(318, 20);
+            this.txtCertificatePemPath.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 111);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(137, 13);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "AmazonRootCA1 Pem Path";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(51, 73);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Private Pem Path\r\n";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(103, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Certificate Pem Path\r\n";
+            // 
+            // btnCerts
+            // 
+            this.btnCerts.Location = new System.Drawing.Point(559, 101);
+            this.btnCerts.Name = "btnCerts";
+            this.btnCerts.Size = new System.Drawing.Size(77, 23);
+            this.btnCerts.TabIndex = 9;
+            this.btnCerts.Text = "Connect";
+            this.btnCerts.UseVisualStyleBackColor = true;
+            this.btnCerts.Click += new System.EventHandler(this.btnCerts_Click);
             // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 521);
+            this.ClientSize = new System.Drawing.Size(906, 675);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -341,9 +445,27 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-
         }
+
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.Label label13;
+
+        private System.Windows.Forms.TextBox txtAmazonRootPemPath;
+        private System.Windows.Forms.TextBox txtPrivatePemPath;
+        private System.Windows.Forms.TextBox txtCertificatePemPath;
+
+        private System.Windows.Forms.Label label12;
+
+        private System.Windows.Forms.Label label11;
+
+        private System.Windows.Forms.Label label10;
+
+        private System.Windows.Forms.Panel panel4;
+
+        private System.Windows.Forms.Button btnCerts;
 
         #endregion
 

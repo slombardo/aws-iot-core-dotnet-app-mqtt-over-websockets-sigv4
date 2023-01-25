@@ -23,6 +23,30 @@ namespace awsiotmqttoverwebsocketswinapp
             presenter = new AwsIotPresenter(this);
         }
 
+        public string CertificatePemPath
+        {
+            get => txtCertificatePemPath.Text;
+            set => txtCertificatePemPath.Text = value;
+        }
+
+        public string PrivatePemPath
+        {
+            get => txtPrivatePemPath.Text;
+            set => txtPrivatePemPath.Text = value;
+        }
+
+        public string AmazonRootPemPath
+        {
+            get => txtAmazonRootPemPath.Text;
+            set => txtAmazonRootPemPath.Text = value;
+        }
+
+        public string Port
+        {
+            get => txtPort.Text;
+            set => txtPort.Text = value;
+        }
+
         public string HostText
         {
             get
@@ -184,7 +208,7 @@ namespace awsiotmqttoverwebsocketswinapp
         {
             if (presenter.mqttClient == null)
             {
-                await presenter.ConnectToAwsIoT();
+                await presenter.Reconnect();
             }
 
             await presenter.PublishMessage(PublishMessageText, TopicToPublishText);
@@ -196,7 +220,7 @@ namespace awsiotmqttoverwebsocketswinapp
         {            
             if (presenter.mqttClient == null)
             {
-                await presenter.ConnectToAwsIoT();
+                await presenter.Reconnect();
             }
 
             await presenter.SubscribeTo(TopicToSubscribeText);
@@ -211,6 +235,11 @@ namespace awsiotmqttoverwebsocketswinapp
         private void UpdateConnectLabel(string message)
         {
             lblConnectStatus.Text = message;
+        }
+
+        private async void btnCerts_Click(object sender, EventArgs e)
+        {
+            await presenter.ConnectToAwsIoTWithCertificates();
         }
     }
 }
