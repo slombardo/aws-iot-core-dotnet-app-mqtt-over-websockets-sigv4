@@ -36,6 +36,7 @@ namespace awsiotmqttoverwebsocketswinapp.Model
                 Query = authorization
             };
 
+            return $"{signedRequestBuilder.Uri.Host}{signedRequestBuilder.Uri.PathAndQuery}";
             return signedRequestBuilder.Uri.AbsoluteUri;
         }
     }

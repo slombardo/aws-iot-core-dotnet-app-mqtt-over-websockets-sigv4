@@ -49,7 +49,7 @@ namespace awsiotmqttoverwebsocketswinapp.Presenter
                 // Create a new MQTT client.
                 var factory = new MqttFactory();
                 mqttClient = factory.CreateMqttClient();
-                mqttClient.ConnectedAsync += async e => await MqttClient_Connected(e);
+                mqttClient.ConnectedAsync += MqttClient_Connected;
                 mqttClient.ApplicationMessageReceivedAsync += MqttClient_ApplicationMessageReceived;
 
                 var broker = view.HostText;
@@ -110,6 +110,7 @@ namespace awsiotmqttoverwebsocketswinapp.Presenter
             catch (Exception ex)
             {
                 Logger.LogError(ex.Message);
+                view.ConnectStatusLabel = "Not connected";
             }
 
         }
@@ -130,20 +131,28 @@ namespace awsiotmqttoverwebsocketswinapp.Presenter
 
                 string signedRequestUrl = awsMqttConnection.SignRequestUrl();
 
-                var factory = new MqttFactory().UseWebSocket4Net();
+                var factory = new MqttFactory();
                 mqttClient = factory.CreateMqttClient();
-                mqttClient.ConnectedAsync += async e => await MqttClient_Connected(e) ;
+                mqttClient.ConnectedAsync += MqttClient_Connected;
                 mqttClient.ApplicationMessageReceivedAsync += MqttClient_ApplicationMessageReceived;
 
-                mqttClientOptions = new MqttClientOptionsBuilder()
-                        .WithWebSocketServer(signedRequestUrl)
-                        .Build();
 
-                await mqttClient.ConnectAsync(mqttClientOptions);
+                MqttClientOptionsBuilderTlsParameters tlsOptions = new MqttClientOptionsBuilderTlsParameters();
+                tlsOptions.SslProtocol = System.Security.Authentication.SslProtocols.Tls12;
+                tlsOptions.UseTls = true;
+
+                mqttClientOptions = new MqttClientOptionsBuilder()
+                    .WithWebSocketServer(signedRequestUrl)
+                    .WithClientId("mqttnet-ID")
+                    .WithTls(tlsOptions)
+                    .Build();
+
+                await mqttClient.ConnectAsync(mqttClientOptions, CancellationToken.None);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex.Message);
+                view.ConnectStatusLabel = "Not connected";
             }
         }
 
